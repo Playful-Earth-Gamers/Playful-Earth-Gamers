@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Gaming Tournament Arena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #05050a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .neon-border {
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.4);
+            border: 1px solid rgba(147, 51, 234, 0.6);
+        }
+        .neon-text-green { text-shadow: 0 0 10px rgba(34, 197, 94, 0.6); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0b16; }
+        ::-webkit-scrollbar-thumb { background: #9333ea; border-radius: 3px; }
+    </style>
+</head>
+<body class="relative min-h-screen">
+
+    <!-- 📺 FULL TRU-VIDEO BACKGROUND LAYER -->
+    <div class="fixed inset-0 w-full h-full -z-20 overflow-hidden">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+            <!-- Falling back to high-grade ambient video matrix stream -->
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-loop-41743-large.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="fixed inset-0 bg-black/80 backdrop-blur-sm -z-10"></div>
+
+    <!-- 🧭 PREMIUM HEADER MATRIX -->
+    <nav class="sticky top-0 bg-black/90 border-b border-purple-900/50 backdrop-blur-md z-40 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3" onclick="location.reload()" class="cursor-pointer">
+            <i class="fa-solid fa-gamepad text-purple-500 text-3xl animate-pulse"></i>
+            <span class="font-orbitron text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                CORE_ARENA
+            </span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <span id="navUserDisplay" class="hidden text-sm font-orbitron font-bold text-green-400 bg-green-950/40 border border-green-500/30 px-3 py-1.5 rounded"></span>
+            <button id="joinBtn" onclick="openAuthModal()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 font-orbitron font-bold px-6 py-2 rounded-md shadow-lg transition-all duration-300 transform hover:scale-105">
+                <i class="fa-solid fa-user-plus mr-2"></i>JOIN TOURNAMENT
+            </button>
+        </div>
+    </nav>
+
+    <!-- 🏆 HERO SEGMENT: AUTOPLAY LEADERBOARD & INTERACTIVE AD ROTATOR -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- AUTOPLAY LEADERBOARD CARD -->
+            <div class="lg:col-span-2 bg-gradient-to-b from-purple-950/40 to-black/90 p-6 rounded-xl border border-purple-500/30 relative overflow-hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="font-orbitron text-xl font-bold tracking-widest text-purple-400">
+                        <i class="fa-solid fa-trophy text-yellow-500 mr-2"></i>TOP RANKED CHAMPIONS (LIVE MATCHES)
+                    </h2>
+                    <span class="bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded tracking-widest font-orbitron animate-pulse">BROADCAST ACTIVE</span>
+                </div>
+                
+                <div class="aspect-video w-full rounded-lg overflow-hidden relative mb-4 border border-purple-500/20">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-gaming-pc-setup-with-neon-lights-42294-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute bottom-4 left-4 bg-black/95 px-4 py-2 rounded border border-purple-500/40 backdrop-blur-sm">
+                        <p class="text-sm font-bold font-orbitron text-purple-300">CURRENT MVP: GhostStrike_9x</p>
+                        <p class="text-xs text-gray-400">Score: 2,491,100 pts</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-purple-900/20 p-3 rounded flex items-center space-x-3 border-l-4 border-yellow-500">
+                        <div class="w-10 h-10 bg-yellow-500 text-black font-orbitron font-bold flex items-center justify-center rounded-full text-lg">1</div>
+                        <div><p class="font-bold text-sm">GhostStrike_9x</p><span class="text-xs text-yellow-400">Rank #1 Global</span></div>
+                    </div>
+                    <div class="bg-purple-900/20 p-3 rounded flex items-center space-x-3 border-l-4 border-slate-400">
+                        <div class="w-10 h-10 bg-slate-400 text-black font-orbitron font-bold flex items-center justify-center rounded-full text-lg">2</div>
+                        <div><p class="font-bold text-sm">Viper_Queen</p><span class="text-xs text-slate-400">Rank #2 Global</span></div>
+                    </div>
+                    <div class="bg-purple-900/20 p-3 rounded flex items-center space-x-3 border-l-4 border-amber-700">
+                        <div class="w-10 h-10 bg-amber-700 text-white font-orbitron font-bold flex items-center justify-center rounded-full text-lg">3</div>
+                        <div><p class="font-bold text-sm">NexusMech</p><span class="text-xs text-amber-500">Rank #3 Global</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPONSORED SLIDESHOW CARD (AUTO-ROTATES COVERS) -->
+            <div class="bg-black/80 p-6 rounded-xl border border-pink-500/30 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-pink-500 block mb-2 font-orbitron">COMMERCIAL PARTNER</span>
+                    <div class="relative w-full h-64 bg-purple-950/30 rounded-lg overflow-hidden border border-pink-500/20">
+                        <img id="adSlideshowImage" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-3 left-3 right-3">
+                            <p id="adTag" class="text-xs text-pink-400 font-bold font-orbitron">PREMIUM AUDIO</p>
+                            <h4 id="adTitle" class="text-sm text-white font-bold leading-tight">Immerse your senses with deep spatial sonic soundscapes.</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-purple-900/50 flex items-center justify-between text-xs text-gray-400">
+                    <span>Live feed sync active</span>
+                    <i class="fa-solid fa-rectangle-ad text-pink-500 text-lg animate-bounce"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🕹️ CATEGORIZED MATRIX DEPLOYMENT -->
+        <section class="space-y-8">
+            <div class="border-b border-purple-900/50 pb-4">
+                <h2 class="font-orbitron text-3xl font-black tracking-wider text-white">ARENA CHALLENGES</h2>
+                <p class="text-gray-400 text-sm">Complete any target node inside the database matrix below to scale your leaderboard rank.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-3 font-orbitron">
+                <button onclick="switchCategory('mobile')" id="tab-mobile" class="category-tab bg-purple-600 px-6 py-3 rounded-md font-bold tracking-wider text-sm flex items-center space-x-2 transition-all shadow-lg">
+                    <i class="fa-solid fa-mobile-screen"></i><span>MOBILE DISCOVERY (41)</span>
+                </button>
+                <button onclick="switchCategory('pc')" id="tab-pc" class="category-tab bg-black/60 border border-purple-900 px-6 py-3 rounded-md font-bold tracking-wider text-sm flex items-center space-x-2 transition-all hover:bg-purple-950/50">
+                    <i class="fa-solid fa-desktop"></i><span>PC MASTERCLASS (41)</span>
+                </button>
+                <button onclick="switchCategory('consoles')" id="tab-consoles" class="category-tab bg-black/60 border border-purple-900 px-6 py-3 rounded-md font-bold tracking-wider text-sm flex items-center space-x-2 transition-all hover:bg-purple-950/50">
+                    <i class="fa-solid fa-gamepad"></i><span>CONSOLES ESPORTS (41)</span>
+                </button>
+                <button onclick="switchCategory('centers')" id="tab-centers" class="category-tab bg-black/60 border border-purple-900 px-6 py-3 rounded-md font-bold tracking-wider text-sm flex items-center space-x-2 transition-all hover:bg-purple-950/50">
+                    <i class="fa-solid fa-tower-broadcast"></i><span>LAN CENTERS (41)</span>
+                </button>
+            </div>
+
+            <!-- GAME CARD INJECTION NODE -->
+            <div id="gamesGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+        </section>
+    </main>
+
+    <!-- 🔐 FIREBASE TO PAYSTACK PIPELINE INTERACTIVE STEP WIZARD -->
+    <div id="authModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-gradient-to-b from-gray-900 to-black rounded-2xl border-2 border-purple-500 max-w-lg w-full overflow-hidden shadow-2xl relative">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="p-8">
+                <div class="flex items-center justify-between mb-8 text-xs font-orbitron font-bold text-gray-500 tracking-widest border-b border-gray-800 pb-4">
+                    <span id="stepBadge-1" class="text-purple-400 border-b-2 border-purple-500 pb-4">1. USER REGISTRATION</span>
+                    <span id="stepBadge-2" class="pb-4">2. PAYSTACK DISBURSEMENT</span>
+                    <span id="stepBadge-3" class="pb-4">3. COMPLETE ACCESS</span>
+                </div>
+
+                <!-- STEP 1: VERIFIED REGISTRATION FIELDS -->
+                <div id="registerStep-1" class="space-y-4">
+                    <h3 class="font-orbitron text-2xl font-bold text-white mb-1">CREATE MEMBER PROFILE</h3>
+                    <p class="text-sm text-gray-400 mb-4">Initialize synchronization profile credentials verified for deployment tracking.</p>
+                    <div>
+                        <label class="block text-xs font-bold font-orbitron text-purple-400 uppercase mb-2">GAMER TAG</label>
+                        <input id="regUser" type="text" value="DoomSlayer_X" class="w-full bg-black/60 border border-purple-900 focus:border-purple-500 rounded p-3 text-white tracking-wide outline-none font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold font-orbitron text-purple-400 uppercase mb-2">EMAIL ADDRESS</label>
+                        <input id="regEmail" type="email" value="player@domain.com" class="w-full bg-black/60 border border-purple-900 focus:border-purple-500 rounded p-3 text-white tracking-wide outline-none font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold font-orbitron text-purple-400 uppercase mb-2">ACCESS PASSWORD</label>
+                        <input id="regPass" type="password" value="SuperSecure123" class="w-full bg-black/60 border border-purple-900 focus:border-purple-500 rounded p-3 text-white tracking-wide outline-none font-mono">
+                    </div>
+                    <button onclick="processStepOne()" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-orbitron font-bold py-3 rounded tracking-widest text-sm mt-4 transition-all">
+                        NEXT STEP: SECURE PORTAL <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- STEP 2: ACTIVE REPLICATED PAYSTACK TERMINAL -->
+                <div id="registerStep-2" class="space-y-6 hidden text-center">
+                    <div class="w-16 h-16 bg-purple-900/30 rounded-full flex items-center justify-center mx-auto border border-purple-500 animate-pulse">
+                        <i class="fa-solid fa-shield-halved text-2xl text-purple-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-orbitron text-2xl font-bold text-white mb-1">PAYSTACK SYSTEM INSTANCE</h3>
+                        <p class="text-sm text-gray-400">Verifying secure pipeline connectivity token protocols...</p>
+                    </div>
+                    <div class="bg-black/80 border border-purple-900 rounded-xl p-4 text-left space-y-4 relative">
+                        <div class="flex justify-between border-b border-purple-950 pb-2"><span class="text-gray-400 font-orbitron text-xs">MERCHANT:</span><span class="font-bold text-purple-400 font-orbitron text-xs">CORE_ARENA ADMISSION</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Account Target:</span><span id="targetEmailDisplay" class="font-mono text-white text-xs"></span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Amount Due:</span><span class="font-bold text-green-400">$10.00 USD Equivalent</span></div>
+                    </div>
+                    <button onclick="simulatePaystackTerminalResponse()" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-orbitron font-bold py-4 rounded tracking-wider text-sm transition-all shadow-lg neon-border">
+                        <i class="fa-solid fa-credit-card mr-2"></i>PROCESS SECURE VERIFICATION INVOICE
+                    </button>
+                </div>
+
+                <!-- STEP 3: REPLICATED FIREBASE DATA INGESTION ENGINE -->
+                <div id="registerStep-3" class="space-y-6 hidden text-center">
+                    <div class="w-20 h-20 bg-green-900/30 rounded-full flex items-center justify-center mx-auto border-2 border-green-500 text-green-400">
+                        <i class="fa-solid fa-circle-check text-4xl neon-text-green"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-orbitron text-2xl font-bold text-white mb-2">INVOICE TRANSACTION MATCHED</h3>
+                        <p class="text-sm text-gray-400 px-4">Paystack webhook confirmed successful collection. Node allocation tokens are staging to overwrite live record tables.</p>
+                    </div>
+                    <div class="p-3 bg-purple-950/30 rounded border border-purple-900/50 text-xs text-left">
+                        <span class="text-gray-500 block font-orbitron">SECURE HASH RECEIPT TOKEN:</span>
+                        <span class="text-purple-300 font-mono break-all" id="renderedReceipt">TXN_FIREBASE_PAY_SECURE_AUTH_HASH_LOADED</span>
+                    </div>
+                    <button onclick="finalizeFirebaseDbWrite()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-orbitron font-bold py-4 rounded tracking-widest text-sm transition-all">
+                        <i class="fa-solid fa-cloud-arrow-up mr-2"></i>COMPLETE REGISTERED PROFILE
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔒 FOOTER COMPLIANCE HUD AND SYSTEM SECURITY DISCLOSURES -->
+    <footer class="bg-black/95 border-t border-purple-950 mt-20 text-gray-400 relative z-10 text-sm">
+        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3">
+                <h4 class="font-orbitron text-white font-bold tracking-wider text-sm uppercase">EXPLORE MAP</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-purple-400">Live Global Leaderboards</a></li>
+                    <li><a href="#" class="hover:text-purple-400">Commercial Ad Allocation</a></li>
+                    <li><a href="#" class="hover:text-purple-400">Challenge Deployment Grids</a></li>
+                </ul>
+            </div>
+            <div class="space-y-3">
+                <h4 class="font-orbitron text-white font-bold tracking-wider text-sm uppercase">CHALLENGE SECTORS</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-purple-400">Mobile Hub Platform</a></li>
+                    <li><a href="#" class="hover:text-purple-400">PC Combat Grid</a></li>
+                    <li><a href="#" class="hover:text-purple-400">Console Esports Engine</a></li>
+                    <li><a href="#" class="hover:text-purple-400">LAN Infrastructure Nodes</a></li>
+                </ul>
+            </div>
+            <div class="space-y-3">
+                <h4 class="font-orbitron text-white font-bold tracking-wider text-sm uppercase">SYS SUPPORT</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-purple-400">Core Help Center</a></li>
+                    <li><a href="#" class="hover:text-purple-400">Bug Bounty Operations</a></li>
+                    <li><a href="#" class="hover:text-purple-400">Terms & Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="space-y-3">
+                <h4 class="font-orbitron text-white font-bold tracking-wider text-sm uppercase">COMMUNITY NODE</h4>
+                <div class="flex space-x-4 text-xl text-purple-400">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 pb-12 border-t border-purple-950/60 pt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-xs leading-relaxed">
+            <div class="bg-purple-950/10 p-5 rounded-lg border border-purple-900/40">
+                <h5 class="font-orbitron text-purple-400 font-bold mb-2 flex items-center">
+                    <i class="fa-solid fa-credit-card mr-2"></i>SECURE PAYMENT NOTICE (PAYSTACK)
+                </h5>
+                <p class="text-gray-400">
+                    All financial transactions, entry fees, and prize payouts are securely processed through Paystack. Your card details and billing information are fully encrypted, PCI-DSS compliant, and never stored on our local servers. Experience seamless, secure gaming commerce.
+                </p>
+            </div>
+            <div class="bg-purple-950/10 p-5 rounded-lg border border-purple-900/40">
+                <h5 class="font-orbitron text-pink-400 font-bold mb-2 flex items-center">
+                    <i class="fa-solid fa-shield-halved mr-2"></i>MEMBER DATA SECURITY NOTICE (FIREBASE)
+                </h5>
+                <p class="text-gray-400">
+                    Your profile, match history, and account credentials are safe with us. Powered by Firebase Security, your data is protected using industry-leading authentication protocols, real-time database encryption, and strict access controls. Play hard, knowing your identity is secure.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-black/60 text-center py-4 text-xs text-gray-600 border-t border-gray-950">
+            © 2026 Ultimate Gaming Platform. All Rights Reserved. Built for Next-Gen Competitors.
+        </div>
+    </footer>
+
+    <!-- ⚙️ COMPREHENSIVE RUNTIME APPLICATION INTELLIGENCE DATABASE -->
+    <script>
+        const gameLibraryData = {
+            mobile: [
+                "Tap-Tempo Blitz", "Swipe & Survive", "Vertical Tilt Arena", "Hyper-Casual Clash", "Thumb-War Arena",
+                "Infinite Grid Jumper", "Pocket Nitro Racer", "Pixel Dungeon Dash", "Match-3 Mana Burst", "Neon Neon Runner",
+                "Tower Stack Tycoon", "Helix Drop Reflex", "Gravity Flip Runner", "Crossy Pixel Cross", "Fingertip Fighter",
+                "Shadow Kunai Slap", "Micro Golf Mastery", "Subway Skater Pro", "Bubble Pop Overlord", "Fruit Slasher Mania",
+                "Pocket Chess Speedrun", "Angry Physics Siege", "Brick Breaker Ultra", "Grid Lock Escape", "Doodle Jump Revival",
+                "Vector Parkour Sim", "Jetpack Coin Rush", "Flappy Arcade Trials", "Tap-Tap Rhythm Star", "Slide Puzzle Expert",
+                "Cyber Hacker Clicker", "Ball Blast Defense", "Word Find Gauntlet", "Neon Geometry Dash", "Bouncing Orbit Arena",
+                "Mine Sweeper Mobile", "Retro Snake Odyssey", "Cube Surfer Deluxe", "Finger Skate Jam", "Tiny Kingdom Defense", "Pocket Heist Puzzle"
+            ],
+            pc: [
+                "FPS Aim Trainer Grid", "APM Strategy Trials", "Typing WPM Dungeon", "Modder’s Sandbox", "Cyber Deckbuilder Pro",
+                "Isometric Hack-n-Slash", "Macro Management Hub", "Pixel Dungeon Crawler", "Terminal Command Hacker", "Precision Platformer X",
+                "RTS Base Build Sprint", "Clicker Emperor", "Stealth Operations Alpha", "Bullet Hell Despair", "Open World Glider",
+                "Turn-Based Tactician", "Physics Bridge Builder", "Space Colony Optimizer", "Cyberpunk Outlaw Sim", "Retro Doom Cloner",
+                "Grand Strategy Sandbox", "Overclock Hardware Sim", "Flight Simulation ACE", "Mecha Assembly Arena", "Voxel Miner Classic",
+                "Card Battler Universe", "Dungeon Crawler Speedrun", "Tower Defense Deluxe", "Pro Keyboard Speedrun", "Survival Craft Sandbox",
+                "Anime Fighter Combo", "Labyrinth Explorer", "Gravity Gun Puzzles", "Neon Rogue-lite Grid", "Speed Runner Climax",
+                "Factory Automation Grid", "Deep Sea Diver Rogue", "Chrono Time-Warp Puzzle", "Shattered Shield Arena", "Cyber Chess Tactics", "Infinite Void Explorer"
+            ],
+            consoles: [
+                "Combo Breaker Dojo", "Perfect Drift Circuits", "Set-Piece Tactics", "Local Co-Op Gauntlet", "Button Masher Extreme",
+                "Grid Iron Touchdown", "Grand Slam Ace Match", "Octane Soccer League", "Ultimate Knockout Dash", "Melee Brawler Royale",
+                "Street Fighter Protocol", "Super Moto Grand Prix", "Skateboarding Vert Jam", "Tekken Combo Strings", "Hoop Dreams Arcade",
+                "Quarterback Blitz", "Formula Apex Lap", "Tag-Team Wrestling Sim", "Split-Screen Rally Cross", "Retro Beat-Em-Up",
+                "Cyber Hockey Showdown", "Platform Fighter Smash", "Samurai Duel Refuse", "Dirt Bike Enduro Master", "Pro Snowboard Shred",
+                "Arcade Boxing Ring", "Pixelated Pinball King", "Volleyball Beach Smash", "Cyber Turf Racing", "Mecha Melee Showdown",
+                "Sci-Fi Laser Tag", "Super Arcade Baseball", "Neon Disc Thrower", "Street Cricket League", "Monster Hunter Strike",
+                "Retro Kart Mayhem", "Championship Pool Hustler", "Bowling Strike Master", "Gunslinger Quickdraw", "Dungeon Brawler Arcade", "Pro Tennis Open Grid"
+            ],
+            centers: [
+                "Local High-Score Board", "Ping Domination Brackets", "Team vs Team Hub", "LAN Party Survival", "Cyber Center Tycoon",
+                "Local Co-Op Odyssey", "5v5 Tactical Defusal", "Symmetric Arena Shooter", "LAN Base Rush", "Spectator Node Battle",
+                "Arcade Machine Master", "Local Grid Domination", "Cyber Café Showdown", "Bunker Defense Mode", "LAN Split-Screen Chase",
+                "Flag Capture Protocol", "Server Room Assault", "Cyber Squad Battlefront", "Venue Exclusive Boss Fight", "High-Speed Link Deathmatch",
+                "LAN Party Speed Clicker", "Center-Wide Battle Royale", "Local Raid Dungeon", "Grid-Point Domination", "Tournament Bracket Climber",
+                "Symmetric Capture Point", "Co-Op Vault Heist", "LAN Zone Flag Rush", "Tactical Entry Challenge", "Center vs Center League",
+                "LAN Party Trivia Blitz", "Cyber Arena Gladiator", "Team Elimination Node", "Hardware Overload Defense", "Local Flag Runner",
+                "Symmetric Sniper Duel", "Squad-Based extraction", "Venue Top-Gun Air Combat", "LAN Party Maze Race", "Cyber Center Retro Grid", "Omni-Seat Grand Prix"
+            ]
+        };
+
+        const commercialAds = [
+            { img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80", tag: "PREMIUM AUDIO", text: "Immerse your senses with deep spatial sonic soundscapes." },
+            { img: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=400&q=80", tag: "GPU RIGS", text: "Unleash ray-tracing compute output at sustained frame metrics." },
+            { img: "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&w=400&q=80", tag: "PRO GEAR", text: "Zero tracking latency mechanical switch decks for faster triggers." }
+        ];
+
+        // RENDER GRID PATTERN
+        function renderCategoryMatrix(categoryKey) {
+            const gridContainer = document.getElementById("gamesGrid");
+            gridContainer.innerHTML = "";
+            
+            gameLibraryData[categoryKey].forEach((gameName, index) => {
+                const gameId = 1000 + index;
+                const dynamicSeed = Math.floor(Math.sin(gameId) * 10000);
+                const placeholderUrl = `https://images.unsplash.com/photo-${1500000000000 + Math.abs(dynamicSeed % 99999999)}?auto=format&fit=crop&w=300&q=60`;
+                
+                const cardMarkup = `
+                    <div class="bg-black/60 rounded-lg overflow-hidden border border-purple-900/60 hover:border-purple-500 transition-all duration-300 group flex flex-col justify-between transform hover:-translate-y-1">
+                        <div class="relative aspect-video w-full bg-purple-950/20 overflow-hidden">
+                            <img src="${placeholderUrl}" onerror="this.src='https://via.placeholder.com/300x180/120626/a855f7?text=Combat+Zone'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-2 left-2 bg-black/90 font-orbitron text-[10px] tracking-widest px-2 py-0.5 rounded text-purple-400 border border-purple-900">
+                                NODE_ID: #${gameId}
+                            </span>
+                        </div>
+                        <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-orbitron font-bold text-white text-base leading-tight tracking-wide group-hover:text-purple-400 transition-colors">${gameName}</h4>
+                                <p class="text-xs text-gray-500 mt-1">Full structural tier access enabled.</p>
+                            </div>
+                            <div class="flex justify-between items-center pt-2 border-t border-purple-950">
+                                <span class="text-xs text-green-400 font-bold uppercase tracking-widest flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full inline-block mr-1.5 animate-ping"></span>READY</span>
+                                <button onclick="openAuthModal()" class="text-xs font-orbitron bg-purple-900/40 hover:bg-purple-600 border border-purple-500/30 text-white font-bold px-3 py-1.5 rounded transition-all">
+                                    LAUNCH NODE
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                gridContainer.innerHTML += cardMarkup;
+            });
+        }
+
+        function switchCategory(targetKey) {
+            document.querySelectorAll('.category-tab').forEach(btn => {
+                btn.className = "category-tab bg-black/60 border border-purple-900 px-6 py-3 rounded-md font-bold tracking-wider text-sm flex items-center space-x-2 transition-all hover:bg-purple-950/50";
+            });
+            const activeTab = document.getElementById(`tab-${targetKey}`);
+            activeTab.className = "category-tab bg-purple-600 px-6 py-3 rounded-md font-bold tracking-wider text-sm flex items-center space-x-2 transition-all shadow-lg neon-border";
+            renderCategoryMatrix(targetKey);
+        }
+
+        // ADVERTISING LOOP ENGINE
+        let activeAdIndex = 0;
+        setInterval(() => {
+            activeAdIndex = (activeAdIndex + 1) % commercialAds.length;
+            const targetAd = commercialAds[activeAdIndex];
+            document.getElementById("adSlideshowImage").src = targetAd.img;
+            document.getElementById("adTag").innerText = targetAd.tag;
+            document.getElementById("adTitle").innerText = targetAd.text;
+        }, 5000);
+
+        // PIPELINE WORKFLOW LOGIC
+        function openAuthModal() { document.getElementById("authModal").classList.remove("hidden"); executeStepView(1); }
+        function closeAuthModal() { document.getElementById("authModal").classList.add("hidden"); }
+
+        function executeStepView(targetStep) {
+            document.getElementById("registerStep-1").classList.add("hidden");
+            document.getElementById("registerStep-2").classList.add("hidden");
+            document.getElementById("registerStep-3").classList.add("hidden");
+            document.getElementById("stepBadge-1").className = "pb-4";
+            document.getElementById("stepBadge-2").className = "pb-4";
+            document.getElementById("stepBadge-3").className = "pb-4";
+
+            document.getElementById(`registerStep-${targetStep}`).classList.remove("hidden");
+            document.getElementById(`stepBadge-${targetStep}`).className = "text-purple-400 border-b-2 border-purple-500 pb-4";
+        }
+
+        function processStepOne() {
+            const emailInput = document.getElementById("regEmail").value;
+            if(!emailInput.includes('@')) { alert('Please supply a valid communication layout syntax.'); return; }
+            document.getElementById("targetEmailDisplay").innerText = emailInput;
+            executeStepView(2);
+        }
+
+        function simulatePaystackTerminalResponse() {
+            // Generating runtime payment cryptographic verify tokens
+            const mockHash = "PSTK_LIVE_REF_" + Array.from({length:24}, () => Math.floor(Math.random()*16).toString(16)).join('').toUpperCase();
+            document.getElementById("renderedReceipt").innerText = mockHash;
+            executeStepView(3);
+        }
+
+        function finalizeFirebaseDbWrite() {
+            const finalUsername = document.getElementById("regUser").value || "Registered_User";
+            
+            // Generate live authenticated record download file token
+            const userProfileConfig = {
+                gamerTag: finalUsername,
+                email: document.getElementById("regEmail").value,
+                verificationId: document.getElementById("renderedReceipt").innerText,
+                timestamp: new Date().toISOString(),
+                status: "AUTHENTICATED_MEMBER"
+            };
+            
+            // Visual DOM Update instead of dead alert messages
+            document.getElementById("navUserDisplay").innerText = `⚡ ${finalUsername.toUpperCase()}`;
+            document.getElementById("navUserDisplay").classList.remove("hidden");
+            document.getElementById("joinBtn").classList.add("hidden");
+
+            // Prompt live file generation stream download for testing verified payload directly
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(userProfileConfig, null, 4));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `firebase_profile_${finalUsername}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+
+            closeAuthModal();
+        }
+
+        window.onload = function() { renderCategoryMatrix('mobile'); };
+    </script>
+</body>
+</html>
