@@ -327,6 +327,33 @@
         </div>
       </div>
 
+      
+  <!-- ------------------------------------------------------------- -->
+  <!-- MEDIA LEADERBOARD WITH VIDEO REELS                            -->
+  <!-- ------------------------------------------------------------- -->
+  <section id="media-leaderboard" class="py-20 px-4 lg:px-8 max-w-7xl mx-auto border-t border-slate-800/80 z-10 relative">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 swipe-up">
+      <div>
+        <div class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-1 flex items-center gap-2">
+          <i data-lucide="trophy" class="w-4 h-4 text-cyan-400"></i> Media Leaderboard Engine
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+          Global Pro Rankings &amp; Live Video Highlights
+        </h2>
+      </div>
+
+      <div class="flex bg-slate-900/90 p-1.5 rounded-xl border border-slate-800 text-xs font-bold">
+        <button id="tabBtnVideos" onclick="switchMediaTab('videos')" class="px-5 py-2.5 rounded-lg transition flex items-center gap-2 bg-cyan-500 text-slate-950 shadow-md">
+          <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Video Highlight Reels
+        </button>
+        <button id="tabBtnSlides" onclick="switchMediaTab('slides')" class="px-5 py-2.5 rounded-lg transition flex items-center gap-2 text-slate-400 hover:text-white">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i> SaaS Slide Deck
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
       <!-- MEDIA CONTAINER -->
       <div class="lg:col-span-7 glass-card border border-slate-800 rounded-3xl p-6 relative overflow-hidden swipe-left">
         <div id="mediaTabVideos" class="space-y-4">
@@ -460,7 +487,7 @@
     <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 swipe-up">
       <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
         <i data-lucide="layers" class="w-3.5 h-3.5 text-cyan-400"></i>
-        <span>Explainer Animated Video &amp; SaaS Workflows</span>
+        <span>Explainer-3D Animated Video &amp; SaaS Workflows</span>
       </div>
       <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
         Complex Software Workflows Made Simple
@@ -487,7 +514,7 @@
           <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">STEP 01 — ONBOARDING</span>
           <h3 class="font-bold text-base text-white">Instant Player Auth &amp; Wallet Verification</h3>
           <p class="text-xs text-slate-400 leading-relaxed">
-            Explainer video showing automated OAuth 2.0 login, Firebase token exchange, and Paystack $1 location-based payment processing.
+            Explainer-3D video showing automated OAuth 2.0 login, Firebase token exchange, and Paystack $1 location-based payment processing.
           </p>
         </div>
         <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-800/80 text-[11px] text-slate-300 font-mono">
@@ -545,31 +572,6 @@
     </div>
   </section>
 
-  <!-- ------------------------------------------------------------- -->
-  <!-- MEDIA LEADERBOARD WITH VIDEO REELS                            -->
-  <!-- ------------------------------------------------------------- -->
-  <section id="media-leaderboard" class="py-20 px-4 lg:px-8 max-w-7xl mx-auto border-t border-slate-800/80 z-10 relative">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 swipe-up">
-      <div>
-        <div class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-1 flex items-center gap-2">
-          <i data-lucide="trophy" class="w-4 h-4 text-cyan-400"></i> Media Leaderboard Engine
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
-          Global Pro Rankings &amp; Live Video Highlights
-        </h2>
-      </div>
-
-      <div class="flex bg-slate-900/90 p-1.5 rounded-xl border border-slate-800 text-xs font-bold">
-        <button id="tabBtnVideos" onclick="switchMediaTab('videos')" class="px-5 py-2.5 rounded-lg transition flex items-center gap-2 bg-cyan-500 text-slate-950 shadow-md">
-          <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Video Highlight Reels
-        </button>
-        <button id="tabBtnSlides" onclick="switchMediaTab('slides')" class="px-5 py-2.5 rounded-lg transition flex items-center gap-2 text-slate-400 hover:text-white">
-          <i data-lucide="layers" class="w-3.5 h-3.5"></i> SaaS Slide Deck
-        </button>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
       <!-- INTERACTIVE 3D TILT CARD WITH VIDEO PREVIEW -->
       <div class="lg:col-span-5 relative swipe-right">
         <div
