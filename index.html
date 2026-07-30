@@ -313,7 +313,9 @@
               class="w-full h-full object-cover"
               onerror="this.style.display='none'; document.getElementById('logoFallbackText').style.display='block';"
             />
-            <span id="logoFallbackText" class="hidden text-cyan-400 font-black text-xl tracking-tighter">PEG</span>
+            <span id="logoFallbackText" style="display:none" class="text-cyan-400 font-black text-xl tracking-tighter select-none">
+PEG
+</span>
           </div>
         </div>
         <div>
@@ -1414,6 +1416,10 @@
       prizePool += Math.floor(Math.random() * 45) + 5;
       document.getElementById('prizeCounter').innerText = `$${(prizePool / 1000000).toFixed(2)}M`;
     }, 2500);
-  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+lucide.createIcons();
+</script>
 </body>
 </html>
