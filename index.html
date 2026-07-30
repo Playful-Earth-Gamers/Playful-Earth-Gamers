@@ -125,6 +125,102 @@
 .animate-delay-600 {
   animation-delay: 600ms;
 }
+
+    .partner-card {
+
+  height: 100px;
+  width: 200px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:24px;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02)
+  );
+
+  border:1px solid rgba(34,211,238,.25);
+
+  backdrop-filter:blur(15px);
+
+  transition:.5s ease;
+
+}
+
+
+.partner-card img {
+
+  max-width:130px;
+  max-height:50px;
+
+  opacity:.65;
+
+  filter:grayscale(100%);
+
+  transition:.5s ease;
+
+}
+
+
+.partner-card:hover {
+
+  transform:translateY(-8px) scale(1.05);
+
+  border-color:#22d3ee;
+
+  box-shadow:
+  0 0 35px rgba(34,211,238,.35);
+
+}
+
+
+.partner-card:hover img {
+
+  opacity:1;
+
+  filter:grayscale(0);
+
+}
+
+
+
+@keyframes scroll {
+
+  from {
+    transform:translateX(0);
+  }
+
+  to {
+    transform:translateX(-50%);
+  }
+
+}
+
+
+.animate-scroll {
+
+ animation:
+ scroll 30s linear infinite;
+
+}
+
+
+
+@media(max-width:640px){
+
+.partner-card{
+
+ width:150px;
+ height:80px;
+
+}
+
+}
     
     /* ------------------------------------------------------------- */
     /* SWIPING & SLIDING SCROLL ANIMATIONS                          */
@@ -241,7 +337,7 @@
         <div class="w-28 bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-800">
           <div class="bg-gradient-to-r from-cyan-400 to-purple-500 h-full w-[78%] rounded-full"></div>
         </div>
-        <span class="text-[10px] font-mono text-cyan-400">7,850 / 10,000 XP</span>
+        <span class="text-[10px] font-mono text-cyan-400">7,850 / 10,000 rewards</span>
       </div>
 
       <!-- NAVIGATION LINKS -->
@@ -308,6 +404,87 @@
           <span>One Global Gaming Ecosystem — Mobile, PC, Consoles &amp; Game Centers</span>
         </div>
 
+         <div class="overflow-hidden py-12 bg-slate-950 relative">
+
+  <!-- Title -->
+  <div class="text-center mb-10">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white">
+      Trusted <span class="text-cyan-400">Partners & Payment Networks</span>
+    </h2>
+
+    <p class="text-slate-400 mt-3 text-sm sm:text-base">
+      Powered by trusted technology, gaming, and digital payment ecosystems.
+    </p>
+  </div>
+
+
+  <!-- Gradient Fade -->
+  <div class="absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-slate-950 to-transparent z-10"></div>
+
+  <div class="absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-slate-950 to-transparent z-10"></div>
+
+
+  <!-- Logo Slider -->
+  <div class="flex w-max gap-8 animate-scroll hover:[animation-play-state:paused]">
+
+
+    <!-- Partner Card -->
+    <div class="partner-card">
+      <img src="logo1.png">
+    </div>
+
+
+    <div class="partner-card">
+      <img src="logo2.png">
+    </div>
+
+
+    <div class="partner-card">
+      <img src="logo3.png">
+    </div>
+
+
+    <div class="partner-card">
+      <img src="logo4.png">
+    </div>
+
+
+    <div class="partner-card">
+      <img src="logo5.png">
+    </div>
+
+
+    <div class="partner-card">
+      <img src="payment1.png">
+    </div>
+
+
+    <div class="partner-card">
+      <img src="payment2.png">
+    </div>
+
+
+    <div class="partner-card">
+      <img src="payment3.png">
+    </div>
+
+
+
+    <!-- Duplicate Loop -->
+    <div class="partner-card">
+      <img src="logo1.png">
+    </div>
+
+    <div class="partner-card">
+      <img src="logo2.png">
+    </div>
+
+    <div class="partner-card">
+      <img src="logo3.png">
+    </div>
+
+  </div>
+        
         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]">
           Every Player Has Potential. Every Backer Has a Stake
           Every Match Matters. Every Bet Counts.
