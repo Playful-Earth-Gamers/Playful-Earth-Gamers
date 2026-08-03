@@ -37,9 +37,6 @@
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Three.js 3D Graphics Engine CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
   <!-- Paystack Inline JS CDN -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
 
@@ -319,22 +316,20 @@
 </head>
 <body class="bg-[#03060a] text-slate-100 font-sans selection:bg-cyan-500 selection:text-black overflow-x-hidden relative">
 
-  <!-- BACKGROUND VIDEO & THREE.JS 3D CANVAS -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <video
-      id="globalBgVideo"
-      autoplay
-      loop
-      muted
-      playsinline
-      class="w-full h-full object-cover opacity-20 filter brightness-95 saturate-150 scale-105"
-    >
-      <source src="assets/globalBgVideo/globalBgVideo.mp4" type="video/mp4" />
-    </video>
+  <!-- BACKGROUND VIDEO ONLY -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+  <video
+    id="globalBgVideo"
+    autoplay
+    loop
+    muted
+    playsinline
+    class="w-full h-full object-cover opacity-25 filter brightness-95 saturate-150 scale-105"
+  >
+    <source src="assets/globalBgVideo/globalBgVideo.mp4" type="video/mp4" />
+  </video>
+</div>
 
-    <!-- Three.js Interactive 3D WebGL Canvas -->
-    <canvas id="threeBgCanvas" class="hidden"></canvas>
-    
     <!-- Glowing Background Orbs -->
     <div class="absolute top-0 left-1/4 w-[900px] h-[900px] bg-gradient-to-br from-cyan-600/15 via-teal-500/10 to-transparent rounded-full blur-[200px] animate-pulse-glow"></div>
     <div class="absolute top-1/2 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-purple-600/15 via-indigo-500/10 to-transparent rounded-full blur-[200px] animate-pulse-glow"></div>
@@ -2116,64 +2111,6 @@ class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl flex items-center jus
 
     renderGameGrids();
 
-    // -------------------------------------------------------------
-    // THREE.JS 3D WEBGLE BACKGROUND GRAPHICS
-    // -------------------------------------------------------------
-    const threeCanvas = document.getElementById('threeBgCanvas');
-    if (threeCanvas) {
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ canvas: threeCanvas, alpha: true, antialias: true });
-      
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-      // Torus Knot Geometry
-      const geometry = new THREE.TorusKnotGeometry(10, 2.5, 120, 16);
-      const material = new THREE.MeshBasicMaterial({ 
-        color: 0x06b6d4, 
-        wireframe: true, 
-        transparent: true, 
-        opacity: 0.18 
-      });
-      const torusKnot = new THREE.Mesh(geometry, material);
-      scene.add(torusKnot);
-
-      // Particle Field
-      const particlesGeo = new THREE.BufferGeometry();
-      const count = 350;
-      const positions = new Float32Array(count * 3);
-      for(let i=0; i<count*3; i++) {
-        positions[i] = (Math.random() - 0.5) * 120;
-      }
-      particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      const particlesMat = new THREE.PointsMaterial({ size: 0.6, color: 0xa855f7, transparent: true, opacity: 0.4 });
-      const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
-      scene.add(particlesMesh);
-
-      camera.position.z = 30;
-
-      let mouseX = 0, mouseY = 0;
-      window.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX - window.innerWidth / 2) * 0.0005;
-        mouseY = (e.clientY - window.innerHeight / 2) * 0.0005;
-      });
-
-      function animateThree() {
-        requestAnimationFrame(animateThree);
-        torusKnot.rotation.x += 0.002 + mouseY * 0.1;
-        torusKnot.rotation.y += 0.004 + mouseX * 0.1;
-        particlesMesh.rotation.y -= 0.001;
-        renderer.render(scene, camera);
-      }
-      animateThree();
-
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    }
 
     // -------------------------------------------------------------
     // 3D SWIPING & SLIDING SCROLL OBSERVER
