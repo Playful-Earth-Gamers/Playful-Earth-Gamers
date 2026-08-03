@@ -333,8 +333,8 @@
     </video>
 
     <!-- Three.js Interactive 3D WebGL Canvas -->
-    <canvas id="threeBgCanvas" class="absolute inset-0 w-full h-full opacity-40"></canvas>
-
+    <canvas id="threeBgCanvas" class="hidden"></canvas>
+    
     <!-- Glowing Background Orbs -->
     <div class="absolute top-0 left-1/4 w-[900px] h-[900px] bg-gradient-to-br from-cyan-600/15 via-teal-500/10 to-transparent rounded-full blur-[200px] animate-pulse-glow"></div>
     <div class="absolute top-1/2 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-purple-600/15 via-indigo-500/10 to-transparent rounded-full blur-[200px] animate-pulse-glow"></div>
@@ -901,7 +901,7 @@
           <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/30 transition text-xs flip-in">
             <div class="flex items-center gap-3">
               <div class="w-8 h-8 rounded-full overflow-hidden border border-cyan-400">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Player Avatar" class="w-full h-full object-cover" />
+                <img src="assets/img/live-logo.jpg" alt="Player Avatar" class="w-full h-full object-cover" />
               </div>
               <div>
                 <div class="font-bold text-slate-100">Viper-Elite 🇺🇸</div>
@@ -914,7 +914,7 @@
           <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/30 transition text-xs flip-in delay-100">
             <div class="flex items-center gap-3">
               <div class="w-8 h-8 rounded-full overflow-hidden border border-purple-400">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Player Avatar" class="w-full h-full object-cover" />
+                <img src="assets/img/live1-logo.jpg" alt="Player Avatar" class="w-full h-full object-cover" />
               </div>
               <div>
                 <div class="font-bold text-slate-100">AURA_Stricker 🇩🇪</div>
@@ -927,7 +927,7 @@
           <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/30 transition text-xs flip-in delay-200">
             <div class="flex items-center gap-3">
               <div class="w-8 h-8 rounded-full overflow-hidden border border-teal-400">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80" alt="Player Avatar" class="w-full h-full object-cover" />
+                <img src="assets/img/live2-logo.jpg" alt="Player Avatar" class="w-full h-full object-cover" />
               </div>
               <div>
                 <div class="font-bold text-slate-100">CyberKage 🇯🇵</div>
@@ -1058,7 +1058,7 @@
         <div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/40 flex items-center justify-center text-purple-400">
           <i data-lucide="shield-alert" class="w-5 h-5"></i>
         </div>
-        <h3 class="font-bold text-sm text-white">AI Anti-Cheat Shield</h3>
+        <h3 class="font-bold text-sm text-white">Anti-Cheat Shield</h3>
         <p class="text-xs text-slate-400 leading-relaxed">
           Real-time telemetry algorithms analyze match feeds and player logs across games to enforce strict fair-play standards.
         </p>
@@ -1298,12 +1298,12 @@
       <!-- Badge 1: SSL -->
       <div class="flex flex-col items-center gap-1">
         <img src="assets/images/logos/ssl.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=40&q=80';" class="w-6 h-6 object-contain" alt="SSL">
-        <span class="text-[9px] text-slate-400 font-mono">256-Bit SSL</span>
+        <span class="text-[9px] text-slate-400 font-mono"></span>
       </div>
       <!-- Badge 2: Encryption -->
       <div class="flex flex-col items-center gap-1">
         <img src="assets/images/logos/encryption.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=40&q=80';" class="w-6 h-6 object-contain" alt="Encryption">
-        <span class="text-[9px] text-slate-400 font-mono">Encrypted</span>
+        <span class="text-[9px] text-slate-400 font-mono"></span>
       </div>
       <!-- Badge 3: Paystack -->
       <div class="flex flex-col items-center gap-1">
@@ -1526,18 +1526,84 @@
     </div>
   </div>
 
-  <!-- VIDEO MODAL POPUP OVERLAY -->
-  <div id="videoModalOverlay" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-4 max-w-3xl w-full space-y-4 relative shadow-2xl pop-in">
-      <button onclick="closeVideoModal()" class="absolute top-4 right-4 text-xs font-bold bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition z-10">
-        Close ✕
-      </button>
-      <div class="h-96 rounded-2xl overflow-hidden bg-black flex items-center justify-center">
-        <video id="modalVideoPlayer" controls class="w-full h-full object-contain"></video>
-      </div>
+<!-- PEG VIDEO MODAL POPUP -->
+<div id="videoModalOverlay" 
+class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+
+  <div class="relative bg-slate-900/90 border border-cyan-400/20 
+  rounded-3xl p-5 max-w-4xl w-full shadow-2xl 
+  shadow-cyan-500/20 pop-in">
+
+    <!-- Close Button -->
+    <button onclick="closeVideoModal()" 
+    class="absolute top-4 right-4 z-20 
+    bg-slate-800/80 hover:bg-red-500 
+    text-slate-300 hover:text-white 
+    px-4 py-2 rounded-xl 
+    text-sm font-bold transition-all">
+      ✕
+    </button>
+
+    <!-- Video Header -->
+    <div class="mb-4">
+      <h2 class="text-xl font-black text-white">
+        PEG Official Trailer
+      </h2>
+      <p class="text-sm text-slate-400">
+        Play. Connect. Compete. Earn.
+      </p>
     </div>
+
+
+    <!-- Video Container -->
+    <div class="relative rounded-2xl overflow-hidden 
+    bg-black border border-slate-700">
+
+      <!-- Loading -->
+      <div id="videoLoading"
+      class="absolute inset-0 flex items-center justify-center bg-black z-10">
+        <div class="animate-spin h-10 w-10 border-4 
+        border-cyan-400 border-t-transparent rounded-full"></div>
+      </div>
+
+
+      <video 
+      id="modalVideoPlayer"
+      controls
+      playsinline
+      class="w-full h-[55vh] object-contain bg-black">
+      </video>
+
+    </div>
+
+
+    <!-- Footer -->
+    <div class="mt-4 flex justify-between items-center text-xs text-slate-400">
+      <span>🎮 Playful Earth Gamers</span>
+      <span>Worldwide Gaming Platform</span>
+    </div>
+
   </div>
 
+</div>
+
+  <!-- PEG VIDEO BUTTONS -->
+
+<button onclick="openVideoModal('assets/peg-virtualCard.mp4')">
+▶ PEG Virtual Card
+</button>
+
+<button onclick="openVideoModal('assets/peg-loan.mp4')">
+▶ PEG Gamer Loans
+</button>
+
+<button onclick="openVideoModal('assets/game-platform.mp4')">
+▶ Gaming Platform
+</button>
+
+<button onclick="openVideoModal('assets/paystack-firebase.mp4')">
+▶ Secure Payments & Firebase
+</button>
   <!-- JAVASCRIPT LOGIC -->
   <script>
     // Initialize Lucide Icons
@@ -1736,81 +1802,298 @@
     // -------------------------------------------------------------
     // 20 GAME GRIDS DATA (MOBILE, PC, GAME CENTER, CONSOLES)
     // -------------------------------------------------------------
-    const gamesData = [
-      // MOBILE
-      { id: 1, name: "PUBG Mobile", cat: "mobile", players: "420K", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: High priority mobile telemetry synced via PlayFab SDK." },
-      { id: 2, name: "Call of Duty Mobile", cat: "mobile", players: "310K", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Direct match payout integration via Paystack webhooks." },
-      { id: 3, name: "Free Fire Max", cat: "mobile", players: "580K", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Low-bandwidth optimization for mobile cellular networks." },
-      { id: 4, name: "Mobile Legends: Bang Bang", cat: "mobile", players: "290K", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Live draft telemetry synced with Next.js Server Actions." },
-      { id: 5, name: "Genshin Impact Mobile", cat: "mobile", players: "180K", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Time-trial leaderboard with instant payout triggers." },
+    const games = [
 
-      // PC
-      { id: 6, name: "Valorant", cat: "pc", players: "640K", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Riot API integration with live anti-cheat verification." },
-      { id: 7, name: "Counter-Strike 2", cat: "pc", players: "890K", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Automated server log parser dispatches prize vaults." },
-      { id: 8, name: "League of Legends", cat: "pc", players: "920K", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Real-time spectator stream ingestion." },
-      { id: 9, name: "Dota 2", cat: "pc", players: "450K", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Tournament bracket generation." },
-      { id: 10, name: "Apex Legends PC", cat: "pc", players: "320K", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Automated squad kill verification telemetry." },
+  // MOBILE
+  { id: 1, name: "PUBG Mobile", cat: "mobile", players: "420K", image: "assets/games/pubg-mobile.jpg", video: "", note: "PEG Arena: Compete globally, join challenges, and track your gaming progress." },
 
-      // GAME CENTER
-      { id: 11, name: "Arcade Street Fighter 6", cat: "gamecenter", players: "120K", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Local LAN Game Center authentication." },
+  { id: 2, name: "Call of Duty Mobile", cat: "mobile", players: "310K", image: "assets/games/call-of-duty-mobile.jpg", video: "", note: "Tournament Ready: Participate in competitive matches and community events." },
 
-      // CONSOLE
-      { id: 16, name: "EA Sports FC 26 (PS5/Xbox)", cat: "console", players: "780K", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Next-gen console cross-play lobby." },
-      { id: 17, name: "NBA 2K26 Console League", cat: "console", players: "410K", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Verified player ranking system." },
-      { id: 18, name: "Fortnite Console Arena", cat: "console", players: "810K", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Cross-platform authentication." },
-      { id: 19, name: "Mortal Kombat 1 Console", cat: "console", players: "110K", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Video replay archiving." },
-      { id: 20, name: "Call of Duty Warzone Console", cat: "console", players: "690K", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=400&q=80", video: "", note: "Explainer-3D Note: Hardware financing eligibility." }
-    ];
+  { id: 3, name: "Free Fire Max", cat: "mobile", players: "580K", image: "assets/games/free-fire-max.jpg", video: "", note: "Player Experience: Connect with gamers and enjoy fast competitive gameplay." },
+
+  { id: 4, name: "Mobile Legends: Bang Bang", cat: "mobile", players: "290K", image: "assets/games/mobile-legends.jpg", video: "", note: "Community Highlight: Build teams, compete, and climb rankings." },
+
+  { id: 5, name: "Genshin Impact Mobile", cat: "mobile", players: "180K", image: "assets/games/genshin-impact.jpg", video: "", note: "Game Profile: Explore activities, achievements, and PEG features." },
+
+
+  // PC
+  { id: 6, name: "Valorant", cat: "pc", players: "640K", image: "assets/games/valorant.jpg", video: "", note: "PEG Arena: Competitive battles with ranked gaming experiences." },
+
+  { id: 7, name: "Counter-Strike 2", cat: "pc", players: "890K", image: "assets/games/counter-strike-2.jpg", video: "", note: "Tournament Ready: Join events, rankings, and competitive matches." },
+
+  { id: 8, name: "League of Legends", cat: "pc", players: "920K", image: "assets/games/league-of-legends.jpg", video: "", note: "Player Experience: Connect with the global gaming community." },
+
+  { id: 9, name: "Dota 2", cat: "pc", players: "450K", image: "assets/games/dota-2.jpg", video: "", note: "PEG Challenge Info: Compete in events and follow leaderboard progress." },
+
+  { id: 10, name: "Apex Legends PC", cat: "pc", players: "320K", image: "assets/games/apex-legends.jpg", video: "", note: "Community Highlight: Team up and compete with players worldwide." },
+
+
+  // GAME CENTER
+  { id: 11, name: "Arcade Street Fighter 6", cat: "gamecenter", players: "120K", image: "assets/games/street-fighter-6.jpg", video: "", note: "Game Center Experience: Connect local players and competitive communities." },
+
+
+  // CONSOLE
+  { id: 16, name: "EA Sports FC 26 (PS5/Xbox)", cat: "console", players: "780K", image: "assets/games/fc26.jpg", video: "", note: "Console Arena: Compete across next-generation gaming platforms." },
+
+  { id: 17, name: "NBA 2K26 Console League", cat: "console", players: "410K", image: "assets/games/nba2k26.jpg", video: "", note: "Ranking System: Track performance and compete for top positions." },
+
+  { id: 18, name: "Fortnite Console Arena", cat: "console", players: "810K", image: "assets/games/fortnite.jpg", video: "", note: "Cross-Platform Gaming: Play, connect, and compete with others." },
+
+  { id: 19, name: "Mortal Kombat 1 Console", cat: "console", players: "110K", image: "assets/games/mortal-kombat-1.jpg", video: "", note: "Competitive Battles: Challenge players and showcase your skills." },
+
+  { id: 20, name: "Call of Duty Warzone Console", cat: "console", players: "690K", image: "assets/games/warzone.jpg", video: "", note: "PEG Arena: Join competitive sessions and community challenges." }
+
+];
 
     function renderGameGrids(filter = 'all', searchQuery = '') {
-      const container = document.getElementById('gameGridContainer');
-      if (!container) return;
-      container.innerHTML = '';
 
-      const filtered = gamesData.filter(g => {
-        const matchesCategory = filter === 'all' || g.cat === filter;
-        const matchesSearch = g.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                              g.cat.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesCategory && matchesSearch;
-      });
+  const container = document.getElementById('gameGridContainer');
 
-      filtered.forEach(g => {
-        const card = document.createElement('div');
-        card.className = "glass-card glass-card-hover rounded-2xl overflow-hidden p-4 space-y-3 transition transform hover:-translate-y-1 shine pop-in";
-        
-        card.innerHTML = `
-          <div class="relative h-36 rounded-xl overflow-hidden bg-black border border-slate-800">
-            ${g.video ? `
-              <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                <source src="${g.video}" type="video/mp4" />
-              </video>
-            ` : `
-              <img src="${g.image}" alt="${g.name}" class="w-full h-full object-cover opacity-80" />
-            `}
-            <span class="absolute top-2 left-2 text-[9px] font-bold uppercase px-2 py-0.5 rounded bg-cyan-950/90 text-cyan-400 border border-cyan-800">
-              ${g.cat}
-            </span>
-            <span class="absolute bottom-2 right-2 text-[10px] font-mono text-emerald-400 bg-slate-950/90 px-2 py-0.5 rounded">
-              ${g.players} Active
-            </span>
-          </div>
+  if (!container) return;
 
-          <div>
-            <h3 class="font-bold text-sm text-white">${g.name}</h3>
-            <p class="text-[10px] font-mono text-cyan-400/90 mt-1">${g.note}</p>
-          </div>
+  container.innerHTML = "";
 
-          <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
-            <button onclick="openVideoModal('${g.video || 'assets/dontknow.mp4'}')" class="text-[11px] font-bold text-cyan-400 hover:underline flex items-center gap-1">
-              <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Explainer Video
-            </button>
-            <button onclick="openAuthModal('register')" class="px-3 py-1 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition">
-              Join Arena
-            </button>
-          </div>
-        `;
-        container.appendChild(card);
-      });
+
+  const query = searchQuery.toLowerCase().trim();
+
+
+  const filteredGames = gamesData.filter(game => {
+
+    const categoryMatch =
+      filter === "all" || game.cat === filter;
+
+
+    const searchMatch =
+      game.name.toLowerCase().includes(query) ||
+      game.cat.toLowerCase().includes(query);
+
+
+    return categoryMatch && searchMatch;
+
+  });
+
+
+
+  if (filteredGames.length === 0) {
+
+    container.innerHTML = `
+      <div class="col-span-full text-center py-10">
+
+        <h3 class="text-white font-bold text-lg">
+          No Games Found
+        </h3>
+
+        <p class="text-slate-400 text-sm mt-2">
+          Try another search or category.
+        </p>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+
+  filteredGames.forEach(game => {
+
+
+    const card = document.createElement("div");
+
+
+    card.className = `
+      glass-card 
+      glass-card-hover 
+      rounded-2xl 
+      overflow-hidden 
+      p-4 
+      space-y-3 
+      transition 
+      transform 
+      hover:-translate-y-1 
+      shine 
+      pop-in
+    `;
+
+
+
+    const mediaContent = game.video
+
+      ? `
+
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        preload="metadata"
+        class="w-full h-full object-cover">
+
+        <source src="${game.video}" type="video/mp4">
+
+      </video>
+
+      `
+
+      :
+
+      `
+
+      <img 
+        src="${game.image}" 
+        alt="${game.name}"
+        loading="lazy"
+        class="w-full h-full object-cover opacity-80">
+
+      `;
+
+
+
+    const videoButton = game.video
+
+      ?
+
+      `
+
+      <button 
+      onclick="openVideoModal('${game.video}')"
+      class="text-[11px] font-bold text-cyan-400 hover:underline flex items-center gap-1">
+
+        <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
+
+        Explainer Video
+
+      </button>
+
+      `
+
+      :
+
+      `
+
+      <span class="text-[11px] text-slate-500">
+        Game Details
+      </span>
+
+      `;
+
+
+
+    card.innerHTML = `
+
+
+      <div class="relative h-36 rounded-xl overflow-hidden bg-black border border-slate-800">
+
+
+        ${mediaContent}
+
+
+        <span class="
+        absolute top-2 left-2 
+        text-[9px] font-bold uppercase 
+        px-2 py-0.5 rounded 
+        bg-cyan-950/90 
+        text-cyan-400 
+        border border-cyan-800">
+
+          ${game.cat}
+
+        </span>
+
+
+
+        <span class="
+        absolute bottom-2 right-2 
+        text-[10px] font-mono 
+        text-emerald-400 
+        bg-slate-950/90 
+        px-2 py-0.5 rounded">
+
+          ${game.players} Active
+
+        </span>
+
+
+      </div>
+
+
+
+      <div>
+
+        <h3 class="font-bold text-sm text-white">
+
+          ${game.name}
+
+        </h3>
+
+
+        <p class="
+        text-[10px] 
+        font-mono 
+        text-cyan-400/90 
+        mt-1">
+
+          ${game.note}
+
+        </p>
+
+
+      </div>
+
+
+
+      <div class="
+      pt-2 
+      border-t 
+      border-slate-800 
+      flex 
+      items-center 
+      justify-between">
+
+
+        ${videoButton}
+
+
+
+        <button 
+        onclick="openAuthModal('register')"
+        class="
+        px-3 py-1 
+        rounded-lg 
+        bg-cyan-500 
+        hover:bg-cyan-400 
+        text-slate-950 
+        font-bold 
+        text-xs 
+        transition">
+
+          Join Arena
+
+        </button>
+
+
+      </div>
+
+
+    `;
+
+
+
+    container.appendChild(card);
+
+
+  });
+
+
+
+  // Reload Lucide icons after dynamic cards render
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+
+
+}
 
       lucide.createIcons();
     }
